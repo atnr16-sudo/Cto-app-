@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #D4A843;
+  --gold-light: #F0DFA8;
+  --gold-dark: #B8922E;
+  --black: #1A1A1A;
+  --black-2: #2A2A2A;
+  --black-3: #333333;
+}
+
+body {
+  background: #0D0D0D;
+  color: #E5E5E5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Gold accent utilities */
+.gold-text { color: var(--gold); }
+.gold-border { border-color: var(--gold); }
+.gold-bg { background: var(--gold); }
+.gold-bg-light { background: var(--gold-light); }
+.gold-bg-dark { background: var(--gold-dark); }
+
+/* Card styling */
+.card {
+  background: linear-gradient(145deg, #1E1E1E, #252525);
+  border: 1px solid #333;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 32px rgba(212,168,67,0.1);
+}
+.card-gold {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212,168,67,0.08);
+}
+
+/* Button */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #1A1A1A;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 10px 24px;
+  transition: all 0.2s;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+.btn-gold:disabled {
+  opacity: 0.5;
+  transform: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #444;
+  color: #CCC;
+  border-radius: 12px;
+  padding: 10px 24px;
+  transition: all 0.2s;
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Input */
+.input {
+  background: #1A1A1A;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #E5E5E5;
+  outline: none;
+  transition: all 0.2s;
+  width: 100%;
+}
+.input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,168,67,0.1);
+}
+.input::placeholder {
+  color: #666;
+}
+
+/* Badge */
+.badge-new {
+  background: var(--gold);
+  color: #1A1A1A;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* Tab bar */
+.tab-bar {
+  background: #111;
+  border-top: 1px solid #222;
+  backdrop-filter: blur(20px);
+}
+
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  color: #666;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.tab-btn:hover { color: #999; }
+.tab-btn.active {
+  color: var(--gold);
+  background: rgba(212,168,67,0.08);
+}
+.tab-btn svg { width: 22px; height: 22px; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #1A1A1A; }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* Select / checkbox */
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D4A843' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* Toggle switch */
+.toggle {
+  width: 44px;
+  height: 24px;
+  background: #333;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.toggle.active { background: var(--gold); }
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+.toggle.active::after { left: 22px; }
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(212,168,67,0); }
+}
+.pulse-gold {
+  animation: pulse-gold 2s infinite;
+}
+
+/* Grid layout for autoscan cities */
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px;
+}
